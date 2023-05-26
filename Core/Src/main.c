@@ -280,67 +280,13 @@ int a = 0 ;
               // wait for the echo pin to go low
               while ((HAL_GPIO_ReadPin(ECHO_PORT, ECHO_PIN)) && pMillis + 50 > HAL_GetTick());
               Value2 = __HAL_TIM_GET_COUNTER(&htim2);
-              for(int k = 0; k<7;k++){
-            	  if(k==0){
-            		  Distance = 50;
-            		   HAL_Delay(50);
-            		  if(Distance >10){
-            		     stepCV(50, 1000);
-            		      HAL_Delay(50);
-            		  }
-            	  }
-            	  if(k==1){
-            	       Distance = 65;
-            	       HAL_Delay(50);
-            	       if(Distance >10){
-            	                          	  stepCV(50, 1000);
-            	                          	  HAL_Delay(50);
-            	                   	  }
-            	  }
-            	  if(k==2){
-            	         Distance = 90;
-            	         HAL_Delay(50);
-            	         if(Distance >10){
-            	                            	  stepCV(50, 1000);
-            	                            	  HAL_Delay(50);
-            	                     	  }
-            	  }
-            	  if(k==3){
-            	             	         Distance = 43;
-            	             	         HAL_Delay(50);
-            	             	         if(Distance >10){
-            	             	                            	  stepCV(50, 1000);
-            	             	                            	  HAL_Delay(50);
-            	             	                     	  }
-            	             	  }
-            	  if(k==4){
-            	             	         Distance = 25;
-            	             	         HAL_Delay(50);
-            	             	         if(Distance >10){
-            	             	                            	  stepCV(50, 1000);
-            	             	                            	  HAL_Delay(50);
-            	             	                     	  }
-            	             	  }
-            	  if(k==5){
-            	             	             	         Distance = 6;
-            	             	             	       printf("\n Distance is closer than 10cm!!! ");
-            	             	             	         HAL_Delay(3000);
-            	             	             	         if(Distance >10){
-            	             	             	                            	  stepCV(50, 1000);
-            	             	             	                            	  HAL_Delay(3000);
-            	             	             	                     	  }
-            	             	             	  }
-            	  if(k==6){
-            	             	             	             	         Distance = 225;
-            	             	             	             	         HAL_Delay(50);
-            	             	             	             	         if(Distance >10){
-            	             	             	             	                            	  stepCV(150, 1000);
-            	             	             	             	                            	  HAL_Delay(50);
-            	             	             	             	                     	  }
-            	             	             	             	  }
-              	  }
+             
+              Distance = (Value2-Value1)* 0.034/2;
+              HAL_Delay(50);
 
-              //stepCV(360, 1500);
+              if(Distance >10){
+               	  stepCV(50, 1500);  
+              }
               }
 
             else{
